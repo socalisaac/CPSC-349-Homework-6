@@ -6,16 +6,16 @@ var ws = new WebSocketServer({
 });
 var messages = [];
 console.log('websockets server started');
-ws.on('connection', function(socket) {
+ws.on('connection', function (socket) {
   console.log('client connection established');
 
-  messages.forEach(function(msg) {
+  messages.forEach(function (msg) {
     socket.send(msg);
   });
 
-  socket.on('message', function(data) {
+  socket.on('message', function (data) {
     console.log('message received: ' + data);
-    ws.clients.forEach(function(clientSocket) {
+    ws.clients.forEach(function (clientSocket) {
       clientSocket.send(data)
     });
     // socket.send(data);

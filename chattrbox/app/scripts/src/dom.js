@@ -4,7 +4,7 @@ import md5 from 'crypto-js/md5';
 
 function createGravatarUrl(username) {
   let userhash = md5(username);
-  userhash = userhash.toString(); 
+  userhash = userhash.toString();
   return `http://www.gravatar.com/avatar/${userhash}`;
 }
 
@@ -45,8 +45,8 @@ export class ChatList {
     // console.log('logging this.username', this.username);
     // console.log('logging this.messageData.user', messageData.user);
     if (this.username === messageData.user) {
-        // console.log('adding me');
-        $messageRow.addClass('me');
+      // console.log('adding me');
+      $messageRow.addClass('me');
     }
 
     var $message = $('<p>');
@@ -58,7 +58,7 @@ export class ChatList {
 
     $message.append($('<span>', {
       class: 'timestamp',
-    'data-time': messageData.timestamp,
+      'data-time': messageData.timestamp,
       text: moment(messageData.timeStamp).fromNow()
     }));
 
@@ -81,12 +81,12 @@ export class ChatList {
 
   init() {
     this.timer = setInterval(() => {
-        $('[data-time]').each((idx, element) => {
-            let $element = $(element);
-            let timestamp = new Date().setTime($element.attr('data-time'));
-            let ago = moment(timestamp).fromNow();
-            $element.html(ago);
-        });
+      $('[data-time]').each((idx, element) => {
+        let $element = $(element);
+        let timestamp = new Date().setTime($element.attr('data-time'));
+        let ago = moment(timestamp).fromNow();
+        $element.html(ago);
+      });
     }, 1000);
   }
 }

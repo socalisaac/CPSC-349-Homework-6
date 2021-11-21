@@ -1,10 +1,16 @@
 import socket from './ws-client';
-import {UserStore} from './storage';
-import {ChatForm, ChatList, promptForUsername} from './dom';
+import {
+  UserStore
+} from './storage';
+import {
+  ChatForm,
+  ChatList,
+  promptForUsername
+} from './dom';
 
 let userStore = new UserStore('x-chattrbox/u');
 
-class ChatApp { 
+class ChatApp {
   constructor() {
     this.username = userStore.get();
     if (!this.username) {
